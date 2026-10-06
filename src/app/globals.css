@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+/*
+ * "Masala dabba pop": rani pink, peacock and pistachio on rose-tinted paper, with ink outlines
+ * and sticker shadows. Deliberately unlike the other showcase apps (no amber, no Inter).
+ */
+:root {
+  --bg: #fdf1f2;
+  --bg-2: #f8e3e6;
+  --surface: #ffffff;
+  --ink: #0d2b30;
+  --ink-2: #3d5a5e;
+  --ink-3: #7f9497;
+  --line: rgba(13, 43, 48, 0.14);
+  --rani: #e3256b;
+  --peacock: #0f5257;
+  --pista: #a3c93a;
+  --leaf: #3f8f3a;
+  --chili: #e4572e;
+  --edge: #0d2b30;
+  --glass: rgba(253, 241, 242, 0.82);
+  --pop: 4px 4px 0 var(--edge);
+  --pop-sm: 3px 3px 0 var(--edge);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #071d20;
+    --bg-2: #0d2a2e;
+    --surface: #10322f;
+    --ink: #fdf1f2;
+    --ink-2: #bfd3d1;
+    --ink-3: #7c9a98;
+    --line: rgba(253, 241, 242, 0.12);
+    --rani: #ff4d8d;
+    --peacock: #2fb3a6;
+    --pista: #b8de52;
+    --leaf: #7ccf5b;
+    --chili: #ff7a50;
+    --edge: #000000;
+    --glass: rgba(7, 29, 32, 0.8);
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-rani: var(--rani);
+  --color-peacock: var(--peacock);
+  --color-pista: var(--pista);
+  --color-leaf: var(--leaf);
+  --color-chili: var(--chili);
+  --color-edge: var(--edge);
+  --font-sans: var(--font-figtree);
+  --font-display: var(--font-bricolage);
+  --font-hand: var(--font-kalam);
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-figtree), system-ui, sans-serif;
+  overscroll-behavior-y: none;
+  /* A faint dotted grid, like the paper of a kitchen notebook. */
+  background-image: radial-gradient(color-mix(in oklab, var(--ink) 9%, transparent) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
+@layer components {
+  .display {
+    font-family: var(--font-bricolage), sans-serif;
+    font-weight: 800;
+    font-stretch: 78%;
+    letter-spacing: -0.035em;
+    line-height: 0.92;
+  }
+  .hand {
+    font-family: var(--font-kalam), cursive;
+  }
+  .glass {
+    background: var(--glass);
+    backdrop-filter: saturate(1.5) blur(18px);
+  }
+  /* Sticker cards: ink outline and a hard offset shadow. */
+  .card {
+    background: var(--surface);
+    border: 1.5px solid var(--edge);
+    box-shadow: var(--pop-sm);
+  }
+  .sticker {
+    border: 1.5px solid var(--edge);
+    box-shadow: var(--pop-sm);
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .safe-bottom {
+    padding-bottom: max(env(safe-area-inset-bottom), 10px);
+  }
+}
